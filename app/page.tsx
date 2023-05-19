@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main>
       <h1 className="text-4xl">Hello TEster</h1>
+      <p>deploy tester</p>
     </main>
   );
 }
