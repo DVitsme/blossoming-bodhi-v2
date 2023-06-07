@@ -19,7 +19,6 @@ export default async function RootLayout({
 }) {
   // fetch the user
   const session = await getServerSession(authOptions);
-  console.log(session);
   return (
     <html lang="en">
       <body className="mx-64">
