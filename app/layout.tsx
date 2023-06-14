@@ -1,9 +1,12 @@
-import Link from 'next/link';
-import './globals.css';
-import { Inter } from 'next/font/google';
-import Nav from './components/Nav';
 import { getServerSession } from 'next-auth';
+import { Inter } from 'next/font/google';
+
+import Nav from './components/Nav';
+import Hydrate from './components/Hydrate';
+
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
+
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,8 +25,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="mx-64">
-        <Nav user={session?.user} expires={session?.expires as string} />
-        {children}
+        <Hydrate>
+          <Nav user={session?.user} expires={session?.expires as string} />
+          {children}
+        </Hydrate>
       </body>
     </html>
   );

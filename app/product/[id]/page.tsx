@@ -1,9 +1,11 @@
 import { SearchParamTypes } from '@/types/SearchParamTypes';
 import { formatUsdPrice } from '@/util/PriceFormat';
 import Image from 'next/image';
+import AddToCart from './AddToCart';
 
 const Product = async ({ searchParams }: SearchParamTypes) => {
   const { name, id, image, unit_amount, description, metadata } = searchParams;
+
   return (
     <div className="flex justify-between gap-24 p-12 text-gray-700 items-end">
       <Image
@@ -22,9 +24,7 @@ const Product = async ({ searchParams }: SearchParamTypes) => {
             {unit_amount && formatUsdPrice(unit_amount)}
           </p>
         </div>
-        <button className="my-12 px-6 py-2 font-medium text-white bg-teal-700 rounded-md">
-          Add to Cart
-        </button>
+        <AddToCart {...searchParams} />
       </div>
     </div>
   );
